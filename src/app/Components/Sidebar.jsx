@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Sidebar = () => {
@@ -6,13 +7,15 @@ const Sidebar = () => {
       <h1 className="text-2xl font-bold mb-24 overflow-y-auto ">EchoGPT</h1>
       <nav className="flex-1">
         <Link href="chatHistory" className="flex mb-6 items-center hover:text-gray-300">
-          📜 History
+          <Image src={'/icons8-chat-48.png'} className="mr-2" alt="history icon" width={20} height={20}/> History
         </Link>
+
         <li className="flex mb-6 items-center hover:text-gray-300">
-          📜 Store
+          <Image src={'/icons8-bin-48.png'} className="mr-2" alt="history icon" width={20} height={20}/> Store
         </li>
+
         <li className="flex items-center hover:text-gray-300">
-          📜 AI Tasks
+          <Image src={'/icons8-test-48.png'} className="mr-2" alt="history icon" width={20} height={20}/> AI Tasks
         </li>
       </nav>
       <div className="bg-blue-700 p-4 rounded-lg shadow mt-auto">

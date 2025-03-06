@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
+import Link from "next/link";
+import Menubar from "./Components/Menubar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +26,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="bg-blue-900 z-50 text-center fixed w-full top-0 left-0 py-6">
-          <div className="max-w-7xl w-full mx-auto flex justify-between">
-            <Image src={'/icons8-menu-144.png'} className="lg:hidden" alt="menu icon" height={30} width={30}></Image>
-            <h2 className="tracking-widest text-white">EchoGPT</h2>
-            <p className="text-sm font-bold">user</p>
+          <div className="max-w-7xl w-full mx-auto px-2 flex justify-between">
+            <Menubar></Menubar>
+            <Link href={'/'}>
+              <h2 className="tracking-widest text-white">EchoGPT</h2>
+            </Link>
           </div>
         </header>
         {children}

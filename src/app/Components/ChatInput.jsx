@@ -1,6 +1,7 @@
 'use client';
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const ChatInput = ({setChatHistory}) => {
@@ -76,14 +77,16 @@ const ChatInput = ({setChatHistory}) => {
                 <div className="flex items-center gap-4">
                     <Image 
                         src={'/icons8-add-50.png'} 
-                        alt="rocket logo" 
+                        alt="add icon" 
                         width={20} height={20}
                     />
-                    <Image 
-                        src={'/icons8-history-50.png'} 
-                        alt="rocket logo" 
-                        width={20} height={20}
-                    />
+                    <Link href={'chatHistory'}>
+                        <Image 
+                            src={'/icons8-history-50.png'} 
+                            alt="history icon" 
+                            width={20} height={20}
+                        />
+                    </Link>
                 </div>
             </div>
             <div className="border border-gray-200 rounded-lg p-4 pb-8 w-full">
