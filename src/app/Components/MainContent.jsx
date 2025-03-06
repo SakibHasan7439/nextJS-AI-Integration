@@ -10,14 +10,15 @@ const MainContent = () => {
   return (
     <main className="lg:max-w-4xl w-full mx-auto overflow-auto p-8">
       {
-        setChatHistory.length > 0 ?
-        <InfiniteScroll dataLength={chatHistory.length}><div className="space-y-4">
+        chatHistory.length > 0 ?
+        <InfiniteScroll dataLength={chatHistory.length}><div className="space-y-4 mb-32">
         {chatHistory.map((msg, index) => (
-          <p key={index} className={msg.sender === "You" ? " w-fit text-right bg-blue-100 p-4 rounded-xl" : "text-left bg-gray-100 p-4 rounded-xl"}>
+          <p key={index} className={msg.sender === "You" ? " w-fit text-right bg-blue-100 p-4 rounded-xl" : "text-left p-4 rounded-xl"}>
           {msg.text}
           </p>
         ))}
-      </div></InfiniteScroll> 
+      </div>
+      </InfiniteScroll> 
         :
         <div>
           <Image

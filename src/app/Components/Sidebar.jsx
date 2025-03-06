@@ -2,18 +2,18 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 hidden bg-blue-900 fixed z-10 top-[78px] text-white min-h-screen p-4 lg:flex lg:flex-col">
+    <aside className="w-64 hidden bg-blue-900 fixed z-10 top-[74px] text-white min-h-screen p-4 lg:flex lg:flex-col">
       <h1 className="text-2xl font-bold mb-24 overflow-y-auto ">EchoGPT</h1>
       <nav className="flex-1">
-        <Link href="history" className="flex items-center hover:text-gray-300">
+        <Link href="chatHistory" className="flex mb-6 items-center hover:text-gray-300">
           📜 History
         </Link>
-        <Link href="history" className="flex items-center hover:text-gray-300">
+        <li className="flex mb-6 items-center hover:text-gray-300">
           📜 Store
-        </Link>
-        <Link href="history" className="flex items-center hover:text-gray-300">
+        </li>
+        <li className="flex items-center hover:text-gray-300">
           📜 AI Tasks
-        </Link>
+        </li>
       </nav>
       <div className="bg-blue-700 p-4 rounded-lg shadow mt-auto">
         <p className="text-sm text-gray-200">Unlock pro features</p>

@@ -6,7 +6,6 @@ import { useState } from "react";
 const ChatInput = ({setChatHistory}) => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
     const handleChatInputSubmit = async(e) =>{
         e.preventDefault();
         if(!message){
@@ -14,6 +13,11 @@ const ChatInput = ({setChatHistory}) => {
         }
         const userMessage = {sender: "You", text: message};
         setChatHistory((prevChat)=> [...prevChat, userMessage]);
+
+        // save message to local storage
+        const savedMessage = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+        savedMessage.push(userMessage);
+        localStorage.setItem('chatHistory', JSON.stringify(savedMessage));
 
         setMessage("");
         setLoading(true);
@@ -29,17 +33,26 @@ const ChatInput = ({setChatHistory}) => {
                     }]
                 }
             );
-            console.log();
+
             const botMessage = {
                 sender: "EchoGPT",
                 text:response.data.candidates?.[0]?.content?.parts[0].text || "Sorry I couldn't process it."
             };
             setChatHistory((prevChat)=> [...prevChat, botMessage]);
+            // saving chat in history
+            savedMessage.push(botMessage);
+            localStorage.setItem('chatHistory', JSON.stringify(savedMessage));
 
 
         } catch (err) {
             console.log("error fetching response: ", err);
-            setChatHistory((prevChat)=> [...prevChat, {sender:"EchoGPT", text:"Error fetching response"}]);
+            const errorMessage = {
+                sender:"EchoGPT", 
+                text:"Error fetching response"
+            };
+            setChatHistory((prevChat)=> [...prevChat, errorMessage])
+            savedMessage.push(errorMessage);
+            localStorage.setItem('chatHistory', JSON.stringify(savedMessage));
         }finally{
             setLoading(false);
         }
